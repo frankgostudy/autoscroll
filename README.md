@@ -43,6 +43,12 @@ Add to `Preferences > Key Bindings`:
 ]
 ```
 
+### Logitech Mouse Setup
+For enhanced control, you can configure Logitech mice (e.g., Anywhere 2) as follows:
+- Middle button: Map to `Ctrl + Alt + S` to toggle auto-scroll
+- Scroll wheel right: Map to `Ctrl + Alt + Up` to increase speed
+- Scroll wheel left: Map to `Ctrl + Alt + Down` to decrease speed
+
 ## Usage
 
 ### Basic Controls
