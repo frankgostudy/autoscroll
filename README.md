@@ -1,21 +1,30 @@
 # Sublime Auto Scroll Plugin
 
-A Python plugin for **Sublime Text** to enable smooth and customizable auto-scrolling functionality.
+A Python plugin for **Sublime Text** that enables smooth and customizable auto-scrolling functionality.
 
 ## Features
 
-- **Start/Stop Auto-Scrolling:** Toggle auto-scroll with a single shortcut.
-- **Adjustable Speed:** Increase or decrease scrolling speed using shortcuts.
-- **Smooth Scrolling:** Configurable scrolling frequency and distance for a seamless experience.
+### Core Functions
+- Start/Stop auto-scrolling with `Ctrl + Alt + S`
+- Adjust scrolling speed with `Ctrl + Alt + Up/Down`
+- Smooth scrolling with configurable frequency and distance
+- Downward scrolling from current position
+- Direct viewport position control using `set_viewport_position`
+
+### Performance Parameters
+- Initial Speed: 20ms delay (recommended range: 20-50ms)
+- Minimum Speed: 10ms (prevents unreadable rapid scrolling)
+- Scrolling Distance: 2 pixels per scroll (adjustable up to 10 pixels)
+- Maximum Delay: 2000ms for very slow scrolling
 
 ## Installation
 
-1. Save the `auto_scroll.py` file to your Sublime Text `Packages/User/` directory.
-2. Restart Sublime Text to load the plugin.
+1. Save `auto_scroll.py` to Sublime Text's `Packages/User/` directory
+2. Restart Sublime Text
 
-### Setting Up Key Bindings
+### Key Bindings Setup
 
-To use the plugin, add the following key bindings in `Preferences > Key Bindings`:
+Add to `Preferences > Key Bindings`:
 
 ```json
 [
@@ -32,96 +41,39 @@ To use the plugin, add the following key bindings in `Preferences > Key Bindings
         "command": "auto_scroll_decrease_speed"
     }
 ]
+```
 
+## Usage
 
-Usage
-Start/Stop Auto-Scrolling: Press Ctrl + Alt + S to toggle auto-scrolling.
-Increase Speed: Press Ctrl + Alt + Up to reduce the delay and make scrolling faster.
-Decrease Speed: Press Ctrl + Alt + Down to increase the delay and make scrolling slower.
-Configuration
-The following parameters can be adjusted in the plugin code (auto_scroll.py):
+### Basic Controls
+- Toggle Auto-scroll: `Ctrl + Alt + S`
+- Increase Speed: `Ctrl + Alt + Up`
+- Decrease Speed: `Ctrl + Alt + Down`
 
-Initial Speed: Default is 20ms. Adjust this in AutoScrollHandler.speed.
-Minimum Speed: Set to 10ms for ultra-fast scrolling.
-Scrolling Distance: Default is 2 pixels. Modify AutoScrollHandler.scroll_distance to suit your needs.
-Contributing
-Feel free to fork this repository and submit pull requests to improve the plugin. Suggestions and feedback are welcome!
+### Speed Control Details
+- Speed increases by reducing delay interval
+- Speed decreases by increasing delay interval
+- Speed adjustments also modify scrolling distance
+  - Faster = Larger distance
+  - Slower = Smaller distance
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## Development Notes
 
-功能
-啟動/停止（Toggle）：
+### Plugin Creation
+1. Access via Tools > Developer > New Plugin
+2. Insert auto_scroll.py code
+3. Save in appropriate directory
 
-按下 Ctrl + Alt + S 開始或停止自動滾動。
-滾動方向：
+### Optimization Points
+- Smooth animation through high-frequency updates
+- Balanced scroll distance for natural movement
+- Flexible speed adjustment system
+- Direct viewport control for precise scrolling
 
-從現在位置向尾行滾動。
+## Contributing
 
-加速/減速：
+Pull requests welcome for plugin improvements. Please submit issues for bugs or feature requests.
 
-按下 Ctrl + Alt + Up：減少間隔時間，加速滾動。
-按下 Ctrl + Alt + Down：增加間隔時間，減慢滾動。
+## License
 
-用 set_viewport_position 直接控制視窗位置
-每次增加 Y 座標來實現向下捲動
-
-
-啟動滾動：
-
-按下 Ctrl + Alt + S 開始滾動，速度為每 500 毫秒滾動 5 像素。
-調整速度：
-
-按下 Ctrl + Alt + Up 減少延遲，加速滾動（最小間隔為 5 毫秒）。
-按下 Ctrl + Alt + Down 增加延遲，減慢滾動（最大間隔為 2000 毫秒）。
-停止滾動：
-
-再次按下 Ctrl + Alt + S 停止滾動。
-
-
-改進參數
-捲動速度（speed）：
-
-建議設置為 20ms 至 50ms，確保滾動頻率足夠高，使動畫更流暢。
-每次捲動距離（distance）：
-
-每次捲動距離設置為 2 或 3 像素，這樣滾動幅度不會過大，避免跳動感。
-
-改進點
-速度設置：
-
-初始速度為 20ms，更高頻率保證平滑。
-最小速度設置為 10ms，避免過快滾動導致難以閱讀。
-距離設置：
-
-每次捲動距離設置為 2 像素，確保滾動自然。
-可通過加速快捷鍵增加至 10 像素，適應不同需求。
-加速/減速調整：
-
-加速同時減少速度間隔（更快滾動）並增加距離（更遠滾動）。
-減速時反向操作，讓滾動更加靈活。
-快捷鍵配置
-json
-
-[
-    {
-        "keys": ["ctrl+alt+s"],  // 啟動 / 停止自動滾動
-        "command": "auto_scroll"
-    },
-    {
-        "keys": ["ctrl+alt+up"],  // 加速滾動
-        "command": "auto_scroll_increase_speed"
-    },
-    {
-        "keys": ["ctrl+alt+down"],  // 減速滾動
-        "command": "auto_scroll_decrease_speed"
-    }
-]
-
-撰寫自動滾動插件
-利用 Sublime Text 的內建 API，自行撰寫一個簡單的插件來實現自動滾動。
-
-步驟 1：創建插件
-在 Sublime Text 中，選擇 Tools > Developer > New Plugin。
-
-將 auto_scroll.py 程式碼貼入編輯區域
+MIT License - See LICENSE file for details
