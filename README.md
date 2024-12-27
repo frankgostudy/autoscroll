@@ -117,3 +117,11 @@ json
         "command": "auto_scroll_decrease_speed"
     }
 ]
+
+撰寫自動滾動插件
+利用 Sublime Text 的內建 API，自行撰寫一個簡單的插件來實現自動滾動。
+
+步驟 1：創建插件
+在 Sublime Text 中，選擇 Tools > Developer > New Plugin。
+
+將 auto_scroll.py 程式碼貼入編輯區域
